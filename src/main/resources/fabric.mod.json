@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "blockentitytesting",
+	"version": "${version}",
+	"name": "Block Entity Testing",
+	"description": "Test Mod",
+	"authors": [
+		"bjnzoom2!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/blockentitytesting/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.bjnzoom2.blockentitytesting.BlockEntityTesting"
+		],
+		"fabric-datagen": [
+			"net.bjnzoom2.blockentitytesting.BlockEntityTestingDataGenerator"
+		],
+		"client": [
+			"net.bjnzoom2.blockentitytesting.BlockEntityTestingClient"
+		]
+	},
+	"mixins": [
+		"blockentitytesting.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
