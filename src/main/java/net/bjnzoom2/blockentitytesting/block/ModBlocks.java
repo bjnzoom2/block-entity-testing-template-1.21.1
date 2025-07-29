@@ -1,6 +1,7 @@
 package net.bjnzoom2.blockentitytesting.block;
 
 import net.bjnzoom2.blockentitytesting.BlockEntityTesting;
+import net.bjnzoom2.blockentitytesting.block.custom.PedestalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -15,6 +16,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 public class ModBlocks {
+    public static final Block PEDESTAL = registerBlock("pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
