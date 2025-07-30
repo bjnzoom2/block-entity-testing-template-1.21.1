@@ -1,20 +1,23 @@
 package net.bjnzoom2.blockentitytesting.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.bjnzoom2.blockentitytesting.block.entity.custom.PedestalBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.text.html.BlockView;
 
 public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider{
     private static final VoxelShape SHAPE =
@@ -37,7 +40,7 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
 
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
+        return new PedestalBlockEntity(pos, state);
     }
 
     @Override
@@ -59,6 +62,25 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+        if(world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
+            if(pedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
+                pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
+                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
+                stack.decrement(1);
+
+                pedestalBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+            } else if(stack.isEmpty() && !player.isSneaking()) {
+                ItemStack stackOnPedestal = pedestalBlockEntity.getStack(0);
+                player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
+                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
+                pedestalBlockEntity.clear();
+
+                pedestalBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+            }
+        }
+
+        return ItemActionResult.SUCCESS;
     }
 }
