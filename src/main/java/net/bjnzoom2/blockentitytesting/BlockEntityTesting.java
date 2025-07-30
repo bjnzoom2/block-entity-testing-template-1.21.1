@@ -3,6 +3,7 @@ package net.bjnzoom2.blockentitytesting;
 import net.bjnzoom2.blockentitytesting.block.ModBlocks;
 import net.bjnzoom2.blockentitytesting.block.entity.ModBlockEntities;
 import net.bjnzoom2.blockentitytesting.item.ModItemGroups;
+import net.bjnzoom2.blockentitytesting.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -18,5 +19,6 @@ public class BlockEntityTesting implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerItemGroups();
 		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 	}
 }

@@ -2,6 +2,8 @@ package net.bjnzoom2.blockentitytesting.block.entity.custom;
 
 import net.bjnzoom2.blockentitytesting.block.entity.ImplementedInventory;
 import net.bjnzoom2.blockentitytesting.block.entity.ModBlockEntities;
+import net.bjnzoom2.blockentitytesting.screen.custom.PedestalScreen;
+import net.bjnzoom2.blockentitytesting.screen.custom.PedestalScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -66,7 +68,7 @@ public class PedestalBlockEntity extends BlockEntity implements ImplementedInven
 
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return null;
+        return new PedestalScreenHandler(syncId, playerInventory, this.pos);
     }
 
     @Nullable

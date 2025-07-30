@@ -1,5 +1,6 @@
 package net.bjnzoom2.blockentitytesting.screen.custom;
 
+import net.bjnzoom2.blockentitytesting.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -17,10 +18,15 @@ public class PedestalScreenHandler extends ScreenHandler {
     }
 
     public PedestalScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity) {
-        super(, syncId);
+        super(ModScreenHandlers.PEDESTAL_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity);
 
-        this.addSlot(new Slot(inventory, 0, 80, 35));
+        this.addSlot(new Slot(inventory, 0, 80, 35) {
+            @Override
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
