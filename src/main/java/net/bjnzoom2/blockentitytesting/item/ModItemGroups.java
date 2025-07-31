@@ -20,6 +20,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.blockentitytesting.custom_block_entities"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.PEDESTAL);
+                        entries.add(ModBlocks.GROWTH_CHAMBER);
                     }).build());
 
     public static void registerItemGroups() {BlockEntityTesting.LOGGER.info("Registering Item Groups for " + BlockEntityTesting.MOD_ID);
