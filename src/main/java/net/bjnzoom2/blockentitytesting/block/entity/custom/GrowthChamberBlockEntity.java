@@ -8,7 +8,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -82,10 +84,55 @@ public class GrowthChamberBlockEntity extends BlockEntity implements ExtendedScr
 
     public void tick(World world, BlockPos pos, BlockState state) {
         if(hasRecipe()) {
+            increaseCraftingProgress();
+            markDirty(world, pos, state);
 
+            if(hasCraftingFinished()) {
+                craftItem();
+                resetProgress();
+            }
         } else {
             resetProgress();
         }
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+        this.maxProgress = 72;
+    }
+
+    private void craftItem() {
+        ItemStack output = new ItemStack(Items.DIAMOND, 2);
+
+        this.removeStack(INPUT_SLOT, 1);
+        this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
+                this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));
+    }
+
+    private boolean hasCraftingFinished() {
+        return this.progress >= this.maxProgress;
+    }
+
+    private void increaseCraftingProgress() {
+        this.progress++;
+    }
+
+    private boolean hasRecipe() {
+        Item input = Items.DIAMOND;
+        ItemStack output = new ItemStack(Items.DIAMOND, 2);
+
+        return this.getStack(INPUT_SLOT).isOf(input) && canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+    }
+
+    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getItem() == output.getItem();
+    }
+
+    private boolean canInsertAmountIntoOutputSlot(int count) {
+        int maxCount = this.getStack(OUTPUT_SLOT).isEmpty() ? 64 : this.getStack(OUTPUT_SLOT).getMaxCount();
+        int currentCount = this.getStack(OUTPUT_SLOT).getCount();
+
+        return maxCount >= currentCount + count;
     }
 
     @Override
