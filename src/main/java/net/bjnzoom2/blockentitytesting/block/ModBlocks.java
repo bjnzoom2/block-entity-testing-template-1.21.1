@@ -32,8 +32,8 @@ public class ModBlocks {
         BlockEntityTesting.LOGGER.info("Registering Mod Blocks for " + BlockEntityTesting.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(fabricItemGroupEntries -> {
-            fabricItemGroupEntries.add(ModBlocks.PEDETAL);
-            fabricItemGroupEntries.add(ModBlocks.GROWTH_CHMBER);
+            fabricItemGroupEntries.add(ModBlocks.PEDESTAL);
+            fabricItemGroupEntries.add(ModBlocks.GROWTH_CHAMBER);
         });
     }
 }
