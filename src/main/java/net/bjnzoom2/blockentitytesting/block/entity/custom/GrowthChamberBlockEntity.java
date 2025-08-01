@@ -2,6 +2,7 @@ package net.bjnzoom2.blockentitytesting.block.entity.custom;
 
 import net.bjnzoom2.blockentitytesting.block.entity.ImplementedInventory;
 import net.bjnzoom2.blockentitytesting.block.entity.ModBlockEntities;
+import net.bjnzoom2.blockentitytesting.screen.custom.GrowthChamberScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -79,7 +80,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements ExtendedScr
 
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return null;
+        return new GrowthChamberScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {
