@@ -1,0 +1,10 @@
+{
+  "type": "blockentitytesting:growth_chamber",
+  "ingredient": {
+    "item": "minecraft:raw_gold"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:gold_ingot"
+  }
+}

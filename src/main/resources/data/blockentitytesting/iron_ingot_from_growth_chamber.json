@@ -1,0 +1,10 @@
+{
+  "type": "blockentitytesting:growth_chamber",
+  "ingredient": {
+    "item": "minecraft:raw_iron"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:iron_ingot"
+  }
+}

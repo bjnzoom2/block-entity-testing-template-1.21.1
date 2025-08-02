@@ -2,6 +2,9 @@ package net.bjnzoom2.blockentitytesting.block.entity.custom;
 
 import net.bjnzoom2.blockentitytesting.block.entity.ImplementedInventory;
 import net.bjnzoom2.blockentitytesting.block.entity.ModBlockEntities;
+import net.bjnzoom2.blockentitytesting.recipe.GrowthChamberRecipe;
+import net.bjnzoom2.blockentitytesting.recipe.GrowthChamberRecipeInput;
+import net.bjnzoom2.blockentitytesting.recipe.ModRecipes;
 import net.bjnzoom2.blockentitytesting.screen.custom.GrowthChamberScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -16,6 +19,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -25,6 +29,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GrowthChamberBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
@@ -103,7 +109,9 @@ public class GrowthChamberBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(Items.DIAMOND, 2);
+        Optional<RecipeEntry<GrowthChamberRecipe>> recipe = getCurrentRecipe();
+
+        ItemStack output = recipe.get().value().output();
 
         this.removeStack(INPUT_SLOT, 1);
         this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
@@ -119,10 +127,19 @@ public class GrowthChamberBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean hasRecipe() {
-        Item input = Items.DIAMOND;
-        ItemStack output = new ItemStack(Items.DIAMOND, 2);
+        Optional<RecipeEntry<GrowthChamberRecipe>> recipe = getCurrentRecipe();
+        if(recipe.isEmpty()) {
+            return false;
+        }
 
-        return this.getStack(INPUT_SLOT).isOf(input) && canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        ItemStack output = recipe.get().value().output();
+
+        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+    }
+
+    private Optional<RecipeEntry<GrowthChamberRecipe>> getCurrentRecipe() {
+        return this.getWorld().getRecipeManager()
+                .getFirstMatch(ModRecipes.GROWTH_CHAMBER_TYPE, new GrowthChamberRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
