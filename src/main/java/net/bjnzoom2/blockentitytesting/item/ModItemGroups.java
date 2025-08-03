@@ -19,7 +19,6 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.PEDESTAL);
                         entries.add(ModBlocks.GROWTH_CHAMBER);
-                        entries.add(ModBlocks.BIG_CRAFTING_TABLE);
                     }).build());
 
     public static void registerItemGroups() {BlockEntityTesting.LOGGER.info("Registering Item Groups for " + BlockEntityTesting.MOD_ID);
