@@ -16,6 +16,7 @@ public class GrowthChamberDisplay extends BasicDisplay {
         super(List.of(EntryIngredients.ofIngredient(recipe.value().getIngredients().get(0))),
                 List.of(EntryIngredient.of(EntryStacks.of(recipe.value().getResult(null)))));
     }
+
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
         return GrowthChamberCategory.GROWTH_CHAMBER;
