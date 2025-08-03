@@ -38,6 +38,8 @@ public class GrowthChamberCategory implements DisplayCategory<BasicDisplay> {
         return EntryStacks.of(ModBlocks.GROWTH_CHAMBER.asItem().getDefaultStack());
     }
 
+    // Done with the help:
+    // https://github.com/TeamGalacticraft/Galacticraft/tree/main (MIT License)
     @Override
     public List<Widget> setupDisplay(BasicDisplay display, Rectangle bounds) {
         Point startPoint = new Point(bounds.getCenterX() - 87, bounds.getCenterY() - 35);
