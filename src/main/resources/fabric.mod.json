@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"net.bjnzoom2.blockentitytesting.BlockEntityTestingClient"
+		],
+		"rei_client": [
+			"net.bjnzoom2.blockentitytesting.compat.BlockEntityTestingREIClient"
 		]
 	},
 	"mixins": [

@@ -1,25 +1,34 @@
 package net.bjnzoom2.blockentitytesting.compat;
 
+import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
+import me.shedaniel.rei.api.common.util.EntryStacks;
+import net.bjnzoom2.blockentitytesting.block.ModBlocks;
+import net.bjnzoom2.blockentitytesting.recipe.GrowthChamberRecipe;
+import net.bjnzoom2.blockentitytesting.recipe.ModRecipes;
+import net.bjnzoom2.blockentitytesting.screen.custom.GrowthChamberScreen;
 
 public class BlockEntityTestingREIClient implements REIClientPlugin {
     @Override
     public void registerCategories(CategoryRegistry registry) {
         registry.add(new GrowthChamberCategory());
 
-        registry.addWorkstations(GrowthChamberCategory);
+        registry.addWorkstations(GrowthChamberCategory.GROWTH_CHAMBER, EntryStacks.of(ModBlocks.GROWTH_CHAMBER));
     }
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        REIClientPlugin.super.registerDisplays(registry);
+        registry.registerRecipeFiller(GrowthChamberRecipe.class, ModRecipes.GROWTH_CHAMBER_TYPE,
+                GrowthChamberDisplay::new);
     }
 
     @Override
     public void registerScreens(ScreenRegistry registry) {
-        REIClientPlugin.super.registerScreens(registry);
+        registry.registerClickArea(screen -> new Rectangle(((screen.width - 176) / 2) + 78,
+                        ((screen.height - 166) / 2) + 30, 20, 25), GrowthChamberScreen.class,
+                GrowthChamberCategory.GROWTH_CHAMBER);
     }
 }
