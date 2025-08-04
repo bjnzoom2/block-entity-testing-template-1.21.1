@@ -42,7 +42,7 @@ public record GrowthChamberRecipe(Ingredient inputItem, ItemStack output) implem
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return null;
+        return output;
     }
 
     @Override
