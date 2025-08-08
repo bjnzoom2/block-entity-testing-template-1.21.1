@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "blockentitytesting:block/combiner_bottom",
+    "east": "blockentitytesting:block/combiner_sides",
+    "north": "blockentitytesting:block/combiner_back",
+    "south": "blockentitytesting:block/combiner_front",
+    "up": "blockentitytesting:block/combiner_sides",
+    "west": "blockentitytesting:block/combiner_sides"
+  }
+}
