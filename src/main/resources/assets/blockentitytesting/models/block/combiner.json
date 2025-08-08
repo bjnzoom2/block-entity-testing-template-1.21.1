@@ -6,6 +6,6 @@
     "north": "blockentitytesting:block/combiner_back",
     "south": "blockentitytesting:block/combiner_front",
     "up": "blockentitytesting:block/combiner_sides",
-    "west": "blockentitytesting:block/combiner_sides"
+    "west": "blockentitytesting:block/combiner_side"
   }
 }
