@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "blockentitytesting:block/combine"
+      "model": "blockentitytesting:block/combiner"
     }
   }
 }
