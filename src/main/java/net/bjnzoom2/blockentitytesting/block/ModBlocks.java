@@ -1,6 +1,7 @@
 package net.bjnzoom2.blockentitytesting.block;
 
 import net.bjnzoom2.blockentitytesting.BlockEntityTesting;
+import net.bjnzoom2.blockentitytesting.block.custom.CombinerBlock;
 import net.bjnzoom2.blockentitytesting.block.custom.GrowthChamberBlock;
 import net.bjnzoom2.blockentitytesting.block.custom.PedestalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -18,6 +19,8 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
     public static final Block GROWTH_CHAMBER = registerBlock("growth_chamber",
             new GrowthChamberBlock(AbstractBlock.Settings.create()));
+    public static final Block COMBINER = registerBlock("combiner",
+            new CombinerBlock(AbstractBlock.Settings.create()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -34,6 +37,7 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(ModBlocks.PEDESTAL);
             fabricItemGroupEntries.add(ModBlocks.GROWTH_CHAMBER);
+            fabricItemGroupEntries.add(ModBlocks.COMBINER);
         });
     }
 }

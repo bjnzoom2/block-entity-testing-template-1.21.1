@@ -18,6 +18,16 @@ public class ModRecipes {
                     return "growth_chamber";
                 }
             });
+    public static final RecipeSerializer<CombinerRecipe> COMBINER_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(BlockEntityTesting.MOD_ID, "combiner"),
+            new CombinerRecipe.Serializer());
+    public static final RecipeType<CombinerRecipe> COMBINER_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(BlockEntityTesting.MOD_ID, "combiner"), new RecipeType<CombinerRecipe>() {
+                @Override
+                public String toString() {
+                    return "combiner";
+                }
+            });
     public static void registerRecipes() {
         BlockEntityTesting.LOGGER.info("Registering Custom Recipes for " + BlockEntityTesting.MOD_ID);
     }

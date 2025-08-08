@@ -2,5 +2,6 @@
   "itemgroup.blockentitytesting.custom_block_entities": "Custom Block Entities",
 
   "block.blockentitytesting.pedestal": "Pedestal",
-  "block.blockentitytesting.growth_chamber": "Growth Chamber"
+  "block.blockentitytesting.growth_chamber": "Growth Chamber",
+  "block.blockentitytesting.combiner": "Combiner"
 }

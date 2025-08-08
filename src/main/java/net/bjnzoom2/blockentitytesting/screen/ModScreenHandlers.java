@@ -1,6 +1,7 @@
 package net.bjnzoom2.blockentitytesting.screen;
 
 import net.bjnzoom2.blockentitytesting.BlockEntityTesting;
+import net.bjnzoom2.blockentitytesting.screen.custom.CombinerScreenHandler;
 import net.bjnzoom2.blockentitytesting.screen.custom.GrowthChamberScreenHandler;
 import net.bjnzoom2.blockentitytesting.screen.custom.PedestalScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
@@ -18,6 +19,10 @@ public class ModScreenHandlers {
     public static final ScreenHandlerType<GrowthChamberScreenHandler> GROWTH_CHAMBER_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(BlockEntityTesting.MOD_ID, "growth_chamber_screen_handler"),
                     new ExtendedScreenHandlerType<>(GrowthChamberScreenHandler::new, BlockPos.PACKET_CODEC));
+
+    public static final ScreenHandlerType<CombinerScreenHandler> COMBINER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(BlockEntityTesting.MOD_ID, "combiner_screen_handler"),
+                    new ExtendedScreenHandlerType<>(CombinerScreenHandler::new, BlockPos.PACKET_CODEC));
 
     public static void registerScreenHandlers() {
         BlockEntityTesting.LOGGER.info("Registering Screen Handlers for " + BlockEntityTesting.MOD_ID);
