@@ -1,6 +1,6 @@
 package net.bjnzoom2.blockentitytesting.screen.custom;
 
-import net.bjnzoom2.blockentitytesting.block.entity.custom.GrowthChamberBlockEntity;
+import net.bjnzoom2.blockentitytesting.block.entity.custom.CombinerBlockEntity;
 import net.bjnzoom2.blockentitytesting.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 public class CombinerScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
-    public final GrowthChamberBlockEntity blockEntity;
+    public final CombinerBlockEntity blockEntity;
 
     public CombinerScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(3));
@@ -24,9 +24,9 @@ public class CombinerScreenHandler extends ScreenHandler {
 
     public CombinerScreenHandler(int syncId, PlayerInventory playerInventory,
                                       BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
-        super(ModScreenHandlers.GROWTH_CHAMBER_SCREEN_HANDLER, syncId);
+        super(ModScreenHandlers.COMBINER_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity);
-        this.blockEntity = ((GrowthChamberBlockEntity) blockEntity);
+        this.blockEntity = ((CombinerBlockEntity) blockEntity);
         this.propertyDelegate = arrayPropertyDelegate;
 
         this.addSlot(new Slot(inventory, 0, 56, 19));
