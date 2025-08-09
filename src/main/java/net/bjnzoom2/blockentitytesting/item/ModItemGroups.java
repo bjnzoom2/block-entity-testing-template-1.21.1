@@ -19,6 +19,7 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.PEDESTAL);
                         entries.add(ModBlocks.GROWTH_CHAMBER);
+                        entries.add(ModBlocks.COMBINER);
                     }).build());
 
     public static void registerItemGroups() {BlockEntityTesting.LOGGER.info("Registering Item Groups for " + BlockEntityTesting.MOD_ID);
