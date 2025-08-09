@@ -13,11 +13,12 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public record CombinerRecipe(Ingredient inputItem, ItemStack output) implements Recipe<CombinerRecipeInput> {
+public record CombinerRecipe(Ingredient inputItem1, Ingredient inputItem2, ItemStack output) implements Recipe<CombinerRecipeInput> {
     @Override
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.of();
-        list.add(this.inputItem);
+        list.add(this.inputItem1);
+        list.add(this.inputItem2);
         return list;
     }
 
@@ -27,7 +28,11 @@ public record CombinerRecipe(Ingredient inputItem, ItemStack output) implements 
             return false;
         }
 
-        return inputItem.test(input.getStackInSlot(0));
+        ItemStack slot1 = input.getStackInSlot(0);
+        ItemStack slot2 = input.getStackInSlot(1);
+
+        return (inputItem1.test(slot1) && inputItem2.test(slot2)) ||
+                (inputItem1.test(slot2) && inputItem2.test(slot1));
     }
 
     @Override
@@ -57,13 +62,15 @@ public record CombinerRecipe(Ingredient inputItem, ItemStack output) implements 
 
     public static class Serializer implements RecipeSerializer<CombinerRecipe> {
         public static final MapCodec<CombinerRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CombinerRecipe::inputItem),
+                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CombinerRecipe::inputItem1),
+                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CombinerRecipe::inputItem2),
                 ItemStack.CODEC.fieldOf("result").forGetter(CombinerRecipe::output)
         ).apply(inst, CombinerRecipe::new));
 
         public static final PacketCodec<RegistryByteBuf, CombinerRecipe> STREAM_CODEC =
                 PacketCodec.tuple(
-                        Ingredient.PACKET_CODEC, CombinerRecipe::inputItem,
+                        Ingredient.PACKET_CODEC, CombinerRecipe::inputItem1,
+                        Ingredient.PACKET_CODEC, CombinerRecipe::inputItem2,
                         ItemStack.PACKET_CODEC, CombinerRecipe::output,
                         CombinerRecipe::new);
 
