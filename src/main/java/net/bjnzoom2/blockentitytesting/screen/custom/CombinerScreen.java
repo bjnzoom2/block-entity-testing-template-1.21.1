@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class CombinerScreen extends HandledScreen<CombinerScreenHandler> {
     private static final Identifier GUI_TEXTURE =
-            Identifier.of(BlockEntityTesting.MOD_ID, "textures/gui/growth_chamber/growth_chamber_gui.png");
+            Identifier.of(BlockEntityTesting.MOD_ID, "textures/gui/combiner/combiner_gui.png");
     private static final Identifier DUAL_ARROW_TEXTURE =
             Identifier.of(BlockEntityTesting.MOD_ID, "textures/gui/dual_arrow_progress.png");
 
