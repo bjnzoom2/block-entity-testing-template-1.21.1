@@ -1,7 +1,7 @@
 package net.bjnzoom2.blockentitytesting.recipe;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.input.RecipeInput;;
+import net.minecraft.recipe.input.RecipeInput;
 
 public record CombinerRecipeInput(ItemStack input1, ItemStack input2) implements RecipeInput {
     @Override
