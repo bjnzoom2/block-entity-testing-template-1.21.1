@@ -139,7 +139,7 @@ public class CombinerBlockEntity extends BlockEntity implements ExtendedScreenHa
 
     private Optional<RecipeEntry<CombinerRecipe>> getCurrentRecipe() {
         return this.getWorld().getRecipeManager()
-                .getFirstMatch(ModRecipes.COMBINER_TYPE, new CombinerRecipeInput(inventory.get(INPUT_SLOT_1)), this.getWorld());
+                .getFirstMatch(ModRecipes.COMBINER_TYPE, new CombinerRecipeInput(inventory.get(INPUT_SLOT_1), inventory.get(INPUT_SLOT_2)), this.getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
