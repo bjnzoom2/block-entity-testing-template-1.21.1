@@ -62,7 +62,7 @@ public record CombinerRecipe(Ingredient inputItem1, Ingredient inputItem2, ItemS
 
     public static class Serializer implements RecipeSerializer<CombinerRecipe> {
         public static final MapCodec<CombinerRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CombinerRecipe::inputItem1),
+                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient1").forGetter(CombinerRecipe::inputItem1),
                 Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient2").forGetter(CombinerRecipe::inputItem2),
                 ItemStack.CODEC.fieldOf("result").forGetter(CombinerRecipe::output)
         ).apply(inst, CombinerRecipe::new));
