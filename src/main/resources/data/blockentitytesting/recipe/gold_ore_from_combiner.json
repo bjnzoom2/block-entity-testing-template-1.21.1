@@ -1,0 +1,13 @@
+{
+  "type": "blockentitytesting:combiner",
+  "ingredient1": {
+    "item": "minecraft:raw_gold"
+  },
+  "ingredient2":{
+    "item": "minecraft:stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:gold_ore"
+  }
+}
