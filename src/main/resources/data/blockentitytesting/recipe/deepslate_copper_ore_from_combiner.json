@@ -1,0 +1,13 @@
+{
+  "type": "blockentitytesting:combiner",
+  "ingredient1": {
+    "item": "minecraft:raw_copper"
+  },
+  "ingredient2":{
+    "item": "minecraft:deepslate"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:deepslate_copper_ore"
+  }
+}
