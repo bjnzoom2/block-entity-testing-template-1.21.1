@@ -39,7 +39,7 @@ public class CombinerBlockEntity extends BlockEntity implements ExtendedScreenHa
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
-    private int maxProgress = 200;
+    private int maxProgress = 150;
 
     public CombinerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.COMBINER_BE, pos, state);
@@ -104,7 +104,7 @@ public class CombinerBlockEntity extends BlockEntity implements ExtendedScreenHa
 
     private void resetProgress() {
         this.progress = 0;
-        this.maxProgress = 200;
+        this.maxProgress = 150;
     }
 
     private void craftItem() {
