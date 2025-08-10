@@ -35,7 +35,7 @@ public class CombinerScreen extends HandledScreen<CombinerScreenHandler> {
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(DUAL_ARROW_TEXTURE, x + 74, y + 26, 0, 0,
+            context.drawTexture(DUAL_ARROW_TEXTURE, x + 75, y + 26, 0, 0,
                     handler.getScaledArrowProgress(), 36, 26, 36);
         }
     }
