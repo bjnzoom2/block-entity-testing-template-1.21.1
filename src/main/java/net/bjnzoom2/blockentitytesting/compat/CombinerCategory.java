@@ -47,9 +47,11 @@ public class CombinerCategory implements DisplayCategory<BasicDisplay> {
 
         widgets.add(Widgets.createTexturedWidget(TEXTURE, new Rectangle(startPoint.x, startPoint.y, 175, 82)));
 
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + 54, startPoint.y + 34))
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 56, startPoint.y + 19))
                 .entries(display.getInputEntries().get(0)).markInput());
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + 104, startPoint.y + 34))
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 56, startPoint.y + 53))
+                .entries(display.getInputEntries().get(1)).markInput());
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 104, startPoint.y + 36))
                 .entries(display.getOutputEntries().get(0)).markOutput());
 
         return widgets;
