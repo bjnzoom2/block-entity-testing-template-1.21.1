@@ -7,12 +7,15 @@
     },
     "R": {
       "item": "minecraft:redstone_block"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone"
     }
   },
   "pattern": [
-    "III",
-    "IRI",
-    "III"
+    "ISI",
+    "IRR",
+    "ISI"
   ],
   "result": {
     "count": 1,
