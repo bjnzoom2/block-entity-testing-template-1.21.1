@@ -3,6 +3,7 @@ package net.bjnzoom2.blockentitytesting;
 import net.bjnzoom2.blockentitytesting.block.ModBlocks;
 import net.bjnzoom2.blockentitytesting.block.entity.ModBlockEntities;
 import net.bjnzoom2.blockentitytesting.item.ModItemGroups;
+import net.bjnzoom2.blockentitytesting.item.ModItems;
 import net.bjnzoom2.blockentitytesting.recipe.ModRecipes;
 import net.bjnzoom2.blockentitytesting.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
@@ -17,6 +18,7 @@ public class BlockEntityTesting implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.registerItems();
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerItemGroups();
 		ModBlockEntities.registerBlockEntities();

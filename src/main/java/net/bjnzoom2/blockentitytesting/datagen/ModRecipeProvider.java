@@ -35,5 +35,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('I', Items.IRON_BLOCK)
                 .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
                 .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.COMBINER)
+                .pattern("III")
+                .pattern("IRI")
+                .pattern("III")
+                .input('R', Items.REDSTONE_BLOCK)
+                .input('I', Items.IRON_BLOCK)
+                .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
+                .offerTo(recipeExporter);
     }
 }

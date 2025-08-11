@@ -1,5 +1,9 @@
 {
   "itemgroup.blockentitytesting.custom_block_entities": "Custom Block Entities",
+  "itemgroup.blockentitytesting.custom_items": "Custom Items",
+
+  "item.blockentitytesting.ruby": "Ruby",
+  "item.blockentitytesting.raw_ruby": "Raw Ruby",
 
   "block.blockentitytesting.pedestal": "Pedestal",
   "block.blockentitytesting.growth_chamber": "Growth Chamber",
