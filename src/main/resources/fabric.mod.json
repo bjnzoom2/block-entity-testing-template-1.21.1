@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/bjnzoom2/block-entity-testing-template-1.21.1"
 	},
 	"license": "MIT",
 	"icon": "assets/blockentitytesting/icon.png",
