@@ -1,0 +1,10 @@
+{
+  "type": "blockentitytesting:growth_chamber",
+  "ingredient": {
+    "item": "blockentitytesting:raw_ruby"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:ruby"
+  }
+}
